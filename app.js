@@ -1,3 +1,5 @@
+// Load environment variables first
+require('dotenv').config();
 // app.js - Okay, this is the main setup file. Gotta get the server running.
 // Need these basic Node modules for the server to function:
 var createError = require('http-errors');   // Just helps throw standard errors like 404s easily
@@ -44,3 +46,14 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
+// At the bottom of app.js, before module.exports
+const { sequelize } = require('./models');
+
+// Sync models with database (creates tables if they don't exist)
+// WARNING: Only use force: true in development - it drops and recreates tables!
+sequelize.sync({ force: false }).then(() => {
+    console.log('✅ Database synced');
+}).catch(err => {
+    console.error('❌ Database sync error:', err);
+});
