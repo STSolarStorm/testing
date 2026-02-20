@@ -32,7 +32,126 @@ block content
                     .club-officer-card
                         img(src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6I4sTak5bTNLQVa6_nBUOZQ41ASu2Kfpj8Q&s", alt="No officer")
                         p No officers listed yet
+        div.club-engagements
+            div.calendar
+                div.calendar-header
+                    button(id="prev-month") ‹
+                    div#month-year
+                    button(id="next-month") ›
+                div.calendar-body
+                    div.calendar-weekdays
+                        div Sun
+                        div Mon
+                        div Tue
+                        div Wed
+                        div Thu
+                        div Fri
+                        div Sat
+                    div.calendar-dates
 
+
+                div.club-events-form
+                    div.club-events
+                        div.club-events-heading
+                            button(type="button")#calPop Add Event
+
+                        div.popup-overlay#popupOverlay
+                            div.popup#popup
+                                span.close#closePopup &times;
+                                div.popup-content
+                                    form.news(action="#" method="post")
+                                        div.input-container
+                                            label(for="event_name").form-label Name of Event:
+                                            input(type="text" name="event_name" id="event_name" value=event.eventTitle required=true)
+                                        div.input-container
+                                            label(for="event_date").form-label Date of Event:
+                                            input(type="date" name="event_date" id="event_date" required=true)
+                                        div.input-container
+                                            label.form-label Event Time:
+                                            input(type="time" name="event_start_time" id="event_start_time" required=true)
+                                            | to
+                                            input(type="time" name="event_end_time" id="event_end_time" required=true)
+                                        div.input-container
+                                            label(for="event_info").form-label
+                                            textarea(name="event_info" id="event_info" placeholder="Event Info..." required=true)
+                                        div.form-button-row
+                                            button.button(type="submit" id="addEvent" onclick="addEvent()") Submit Event
+
+                    div.club-events-list
+                        h2.event-name#calPopEvent Event
+                        div.popup-overlay#popupOverlayEvent
+                            div.popup#popupEvent
+                                span.close#closePopupEvent &times;
+                                div.popup-content
+                                    button.button-cancel Remove Event
+                                    div.club-event-info
+                                        div.event-details
+                                            h2 Name:
+                                            p Caleb's Wonderful Day
+                                        div.event-details
+                                            h4 Location:
+                                            p 6354 Boardfish Road
+                                        div.event-details
+                                            h4 Time:
+                                            p 10PM to 11PM
+                                        div.event-details
+                                            h4.info-event Information:
+                                            p Guy was talking smack online. We're going to be educating him about being nice to strangers.
+
+            div.club-news
+                div.club-activities
+                    div.club-activities-heading
+                        h2 Club Activities
+                        h2.formShow#formShow +
+                        h2.formHide#formHide -
+                    div.formNews#formNews
+                        form.news(action="#" method="post")
+                            div.input-container
+                                label(for="activity_name").form-label Name of Activity:
+                                input(type="text" name="activity_name" id="activity_name" required=true)
+                            div.input-container
+                                label(for="activity_info").form-label
+                                textarea(name="activity_info" id="activity_info" placeholder="Activity Info..." required=true)
+                            div.form-button-row
+                                button.button(type="submit") Add Activity
+                    div.activity-content
+                        p Ora ora ora?
+                        p Ora ora ora?
+                        p Ora ora ora?
+                        p Ora ora ora?
+                        p Ora ora ora?
+                        p Ora ora ora?
+                        p Ora ora ora?
+                        p Ora ora ora?
+                        p Ora ora ora?
+                        p Ora ora ora?
+                div.club-opportunities
+                    div.club-activities-heading
+                        h2 Club Opportunities
+                        h2.formShow#formShow2 +
+                        h2.formHide#formHide2 -
+                    div.formNews#formNews2
+                        form.news(action='#' method="post")
+                            div.input-container
+                                label(for="opportunity_name").form-label Name of Opportunity:
+                                input(type="text" name="opportunity_name" id="opportunity_name" required=true)
+                            div.input-container
+                                label(for="opportunity_info").form-label
+                                textarea(name="opportunity_info" id="opportunity_info" placeholder="Opportunity Info..." required=true)
+                            div.form-button-row
+                                button.button(type="submit") Add Opportunity
+                    div.opportunities-content
+                        p Bonesaw is ready~!
+                        p Bonesaw is ready~!
+                        p Bonesaw is ready~!
+                        p Bonesaw is ready~!
+                        p Bonesaw is ready~!
+                        p Bonesaw is ready~!
+                        p Bonesaw is ready~!
+                        p Bonesaw is ready~!
+                        p Bonesaw is ready~!
+                        p Bonesaw is ready~!
+                        p Bonesaw is ready~!
         .club-info-sections
             .club-info-block
                 h3 What is this Activity?

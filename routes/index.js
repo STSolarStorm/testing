@@ -79,9 +79,11 @@ router.get('/clubs/:id', async function(req, res, next) {
 // SHINE'S FORM ROUTES
 
 // GET club creation form
+
+
 router.get('/clubcreate', function(req, res) {
-  res.render('club-create', { title: 'Create New Club' });
-});
+  res.render('mixins/clubCreationForm', { title: 'Create New Club' });
+})
 
 // POST new club - handles form submission
 router.post('/clubs', async function(req, res) {
@@ -109,7 +111,7 @@ router.post('/clubs', async function(req, res) {
       console.error('Validation errors:', error.errors.map(e => e.message));
     }
 
-    res.render('club-create', {
+    res.render('clubCreationForm', {
       title: 'Create New Club',
       error: 'Failed to create club: ' + error.message,
       formData: req.body // Send back the form data so user doesn't lose it
@@ -225,5 +227,7 @@ router.post('/clubs/:id/delete', async function(req, res) {
     res.send('Error deleting club');
   }
 });
+
+
 
 module.exports = router;

@@ -1,0 +1,102 @@
+extends ../layout
+
+block content
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+
+    form(action="#" method="post" enctype="multipart/form-data")
+        div.club-content1
+            div.clubname1
+                label(for="club_name")
+                input(type="text" name="club_name" id="club_name" placeholder="Name of Club" required=true)
+            div.tags1 -
+                label(for="club_category")
+                select(name="club_category" id="club_category" required=true)
+                    option(value="")
+                    option(value="Sports") Sports
+                    option(value="Entertainment") Entertainment
+                    option(value="Creativity") Creativity
+                    option(value="Leadership") Leadership
+                    option(value="Health") Health
+                    option(value="Education") Education
+
+                |-
+            div.bigdescription1
+                label(for="club_description")
+                textarea(name="club_description" id="club_description" placeholder="Description of Club" rows=5 cols=5 required=true)
+            div.club-card-header-image1
+                label(for="club_image") Insert Club Logo Image
+                input(type="file" name="club_image" id="club_image" accept="image/")
+            p.room1 Meets in
+                label(for="club_meet_room").form-label
+                input(type="text" name="club_meet_room" id="club_meet_room" placeholder="Room [ex: P24]" required=true)
+                |  on
+                label(for="club_meet_day").form-label
+                input(type="text" name="club_meet_day" id="club_meet_day" placeholder="Day(s) [ex: Friday]" required=true)
+                | at
+                label(for="club_meet_time").form-label
+                input(type="text" name="club_meet_time" id="club_meet_time" placeholder="Time [ex: Lunch]" required=true)
+            p.advisor1
+                label(for="club_advisor")
+                input(type="text" name="club_advisor" id="club_advisor" placeholder="Club Advisor [ex: Mr. Doe]" required=true)
+            div.links1
+                label(for="insta_link")
+                input(type="text" name="insta_link" id="insta_link" placeholder="Link to Instagram" required=true)
+
+            div.border1
+        div.space21
+            p.officers1 Meet the Officers
+                button.addOfficer(type="button")#addOfficer +
+                div.officercontent1#officerContent
+                    div.clubofficer-content1#officerContainer
+                        div.officersimage1
+                            label(for="off_image1") Insert Officer Image
+                            input(type="file" name="off_image1" id="off_image1" accept="image/" required=true)
+                        p.otitle1
+                            label(for="off_first_name1")
+                            input(type="text" name="off_first_name1" id="off_first_name1" placeholder="Officer First Name" required=true)
+                            label(for="off_last_name1")
+                            input(type="text" name="off_last_name1" id="off_last_name1" placeholder="Officer Last Name" required=true)
+                            | -
+                            label(for="officer_position1")
+                            select(name="officer_position1" id="officer_position1" required=true)
+                                option(value=null)
+                                option(value="president") President
+                                option(value="vice_president") Vice President
+                                option(value="secretary") Secretary
+                                option(value="treasurer") Treasurer
+                                option(value="historian") Historian
+                        block clubofficer-content1
+
+
+
+
+                div.border21
+
+        div.knowcontent1
+            h1.q1 What is this Activity?
+                p.a1
+                    label(for="what_is_activity")
+                    textarea(name="what_is_activity" id="what_is_activity" placeholder="Explain what this activity is. [Ex: Coding Club is dedicated to improving the coding skills of students...]" rows=8 cols=8 required=true)
+                block knowcontent1
+            div.border21
+            block border21
+                div.knowcontent1
+                    h1.q1 What makes this Activity unique?
+                        p.a1
+                            label(for="what_activity_unique")
+                            textarea(name="what_activity_unique" id="what_activity_unique" placeholder="Explain what makes this activity unique. [Ex: Coding Club is the sole club on campus where students can...]" rows=8 cols=8 required=true)
+                        block knowcontent1
+                    div.border21
+                    block border21
+                        div.knowcontent1
+                            h1.q1 What does a typical meeting look like?
+                                p.a1
+                                    label(for="what_typical_meet")
+                                        textarea(name="what_typical_meet" id="what_typical_meet" placeholder="Explain a typical meeting for this club. [Ex: Coding Club meets every friday and we have a discussion..]" rows=8 cols=8 required=true)
+                                block knowcontent1
+                            div.border21
+
+            div.club-create-form-button
+                a.button-cancel(href='/') Cancel
+                button.button.primary(type="submit") Add New Club

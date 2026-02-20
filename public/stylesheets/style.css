@@ -6,6 +6,401 @@ body {
   background-color: #f4f4f4;
 }
 
+a {
+  color: #00B7FF;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px;
+  padding: 5px;
+  background-color: #f6b32c;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+.edison-logo {
+  width: 55px;
+  height: 55px;
+  margin: 10px;
+}
+
+
+.site-name {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  align-self: center;
+  border-left: 1px solid black;
+  padding-left: 15px;
+}
+
+a, .home-link {
+
+  text-decoration: none;
+  color: black;
+
+}
+
+.content {
+  margin: 10px;
+  padding: 10px;
+}
+
+.club-cards-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 25px;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.active, .club-card:hover {
+  background-color: #dfdfdf;
+}
+
+.commit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 1px solid grey;
+}
+
+
+.club-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.club-name {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  padding: 5px;
+}
+
+
+
+
+button.club-card {
+  border: none;
+}
+
+
+.club-pic-logo{
+  width: 350px;
+  height: 300px;
+}
+
+.club-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.club-runner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.club-content {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+
+
+
+
+
+.club-activities {
+  padding: 15px;
+  height: 50%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.club-activities-heading{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.club-opportunities {
+  border-top: 1px solid black;
+  padding: 15px;
+  height: 50%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+
+
+.club-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+}
+
+
+
+
+
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.popup {
+  font-family: Arial, sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content {
+  text-align: center;
+}
+
+.popup .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.map{
+  width: 600px;
+  height: 600px;
+}
+
+.info-section {
+  display: flex;
+  padding: 25px;
+  gap: 30px;
+  justify-content: space-evenly;
+}
+
+.club-engagements{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 20px;
+  padding: 10px;
+}
+
+.club-meet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-container {
+  padding: 10px;
+}
+
+.content-form{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  margin: 20px;
+  background-color: #f6f6f6;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+
+}
+
+.form-header {
+  font-weight: bold;
+  font-family: inter-variable, system-ui, sans-serif;
+}
+
+.form-label {
+  padding: 10px;
+}
+
+button {
+  padding: 10px;
+}
+
+textarea {
+  resize: both;
+  width: 300px;
+  height: 95px;
+  padding: 0;
+  margin: 0;
+}
+
+.calendar {
+  width: 50%;
+  height: 500px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.calendar-header button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+#month-year {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.calendar-weekdays, .calendar-dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.calendar-weekdays div, .calendar-dates div {
+  text-align: center;
+  padding: 10px;
+}
+.calendar-weekdays {
+  background-color: #ffc249;
+}
+.calendar-weekdays div {
+  font-weight: bold;
+}
+.calendar-dates div {
+  border-bottom: 1px solid #fdf3e4;
+  cursor: pointer;
+}
+.calendar-dates div:hover {
+  background-color: #ffe4b3;
+  color: #101010;
+}
+.current-date {
+  background-color: #c19a4a;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+@media (max-width: 400px) {
+  .calendar {
+    width: 100%;
+    margin: 0 10px;
+  }
+}
+
+.event-info {
+  margin-left: 10px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin-left: 90px;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin-left: 140px;
+  margin-right: 100px;
+}
+
+
+.club-news {
+  background-color: #ffffff;
+  margin-top: 100px;
+  margin-bottom: -200px;
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 1px 1px;
+  width: 50%;
+  height: 1000px;
+  box-sizing: border-box;
+}
+
+.half {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.club-events {
+  padding: 15px;
+}
+
+.club-deets {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.club-events-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px;
+  padding: 10px;
+}
+
+.event-name {
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 1px 1px;
+  margin: 5px;
+
+}
+
+.club-events-list h2:hover {
+  background-color: #d3d3d3;
+  cursor: pointer;
+}
+
+.club-event-info {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin: 5px;
+}
+
+.event-details {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  gap: 5px;
+  align-items: center;
+}
+
+
+
 /* HEADER / NAV BAR */
 header.main-header {
   margin: 0;
@@ -244,7 +639,7 @@ nav.main-nav a:hover {
 
 /* INDIVIDUAL CLUB PAGE - FIXED LAYOUT */
 .club-detail-page {
-  background: blanchedalmond;
+  background: #f8f8f8;
   min-height: 100vh;
   padding: 20px;
 }
@@ -426,6 +821,110 @@ nav.main-nav a:hover {
     margin: 40px auto;
   }
 }
+
+.club-activities {
+  padding: 15px;
+  height: 50%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.club-activities-heading{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.club-opportunities {
+  border-top: 1px solid black;
+  padding: 15px;
+  height: 50%;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Club Events*/
+
+.club-events {
+  padding: 15px;
+}
+
+.club-deets {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.club-events-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5px;
+  padding: 10px;
+}
+
+.event-name {
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 1px 1px;
+  margin: 5px;
+
+}
+
+.club-events-list h2:hover {
+  background-color: #d3d3d3;
+  cursor: pointer;
+}
+
+.club-event-info {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin: 5px;
+}
+
+.event-details {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  gap: 5px;
+  align-items: center;
+}
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.popup {
+  font-family: Arial, sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-content {
+  text-align: center;
+}
+
+.popup .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
 
 /* Admin Actions */
 .club-admin-actions {
@@ -747,8 +1246,7 @@ body1 {
 /* Shine's Code - KEEPING ORIGINAL STYLES      */
 /* ============================================ */
 .club-news {
-  background-color: #fff8cd;
-  border: 8px solid #000000;
+  background-color: #ffffff;
   margin-top: 100px;
   margin-bottom: -200px;
   margin-left: 100px;
