@@ -16,13 +16,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'club_id',
       })
     }
-  };
+  }
   Event.init({
     eventtitle: DataTypes.STRING,
-    eventdescription: DataTypes.DATE,
-    eventdate: DataTypes.STRING,
+    eventdescription: DataTypes.STRING,
+    eventdate: DataTypes.DATE,
     eventstart: DataTypes.TIME,
-    eventend: DataTypes.TIME
+    eventend: DataTypes.TIME,
+    club_id: DataTypes.INTEGER
 
 
   }, {
