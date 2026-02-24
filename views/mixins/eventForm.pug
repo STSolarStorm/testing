@@ -1,0 +1,21 @@
+mixin eventForm(events, saveUrl, deleteUrl)
+    div.popup-content
+        form.news(action=saveUrl method="post")
+            div.input-container
+                label(for="event_name").form-label Name of Event:
+                input(type="text" name="event_name" id="event_name" value=events.eventtitle required=true)
+            div.input-container
+                label(for="event_date").form-label Date of Event:
+                input(type="date" name="event_date" id="event_date" required=true)
+            div.input-container
+                label.form-label Event Time:
+                input(type="time" name="event_start_time" id="event_start_time" required=true)
+                | to
+                input(type="time" name="event_end_time" id="event_end_time" required=true)
+            div.input-container
+                label(for="event_info").form-label
+                textarea(name="event_info" id="event_info" placeholder="Event Info..." required=true)
+            if(deleteUrl)
+                a.button(href=deleteUrl) Delete
+            div.form-button-row
+                button.button(type="submit" id="addEvent" onclick="addEvent()") Submit Event

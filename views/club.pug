@@ -61,19 +61,19 @@ block content
                                 div.popup-content
                                     form.news(action="#" method="post")
                                         div.input-container
-                                            label(for="event_name").form-label Name of Event:
-                                            input(type="text" name="event_name" id="event_name" required=true)
+                                            label(for="eventtitle").form-label Name of Event:
+                                            input(type="text" name="eventtitle" id="eventtitle" required=true)
                                         div.input-container
-                                            label(for="event_date").form-label Date of Event:
-                                            input(type="date" name="event_date" id="event_date" required=true)
+                                            label(for="eventdate").form-label Date of Event:
+                                            input(type="date" name="eventdate" id="eventdate" required=true)
                                         div.input-container
                                             label.form-label Event Time:
-                                            input(type="time" name="event_start_time" id="event_start_time" required=true)
+                                            input(type="time" name="event_start_time" id="event_start_time")
                                             | to
-                                            input(type="time" name="event_end_time" id="event_end_time" required=true)
+                                            input(type="time" name="event_end_time" id="event_end_time")
                                         div.input-container
-                                            label(for="event_info").form-label
-                                            textarea(name="event_info" id="event_info" placeholder="Event Info..." required=true)
+                                            label(for="eventdescription").form-label
+                                            textarea(name="eventdescription" id="eventdescription" placeholder="Event Info..." required=true)
                                         div.form-button-row
                                             button.button(type="submit" id="addEvent" onclick="addEvent()") Submit Event
 

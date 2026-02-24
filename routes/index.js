@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const { Club, Officer } = require('../models');
 const { Op } = require('sequelize');
+const eventController = require('../controllers/eventController');
 
 // GET home page - shows all clubs from database
 router.get('/', async function(req, res, next) {
