@@ -218,6 +218,7 @@ router.post('/clubs/:id/edit', async function(req, res) {
   }
 });
 
+
 // POST delete club
 router.post('/clubs/:id/delete', async function(req, res) {
   try {
@@ -229,6 +230,11 @@ router.post('/clubs/:id/delete', async function(req, res) {
   }
 });
 
+// POST new club event
+router.post('/clubs/:id/event/create', eventController.createEvent);
+
+// GET delete club
+router.get('/clubs/:id/event/delete', eventController.deleteEvent);
 
 
 module.exports = router;

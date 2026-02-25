@@ -399,6 +399,14 @@ textarea {
   align-items: center;
 }
 
+.button-cancel {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #bd1d1d;
+  color: white;
+}
+
 
 
 /* HEADER / NAV BAR */

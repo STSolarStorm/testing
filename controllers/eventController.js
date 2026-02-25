@@ -1,8 +1,8 @@
-const {Event} = require('../models')
+const {ClubEvent} = require('../models')
 
 module.exports.createEvent = async function (req, res){
     let clubId = req.params.clubId
-    await Event.create({
+    await ClubEvent.create({
         eventtitle: req.body.eventtitle,
         eventdescription: req.body.eventdescription,
         eventdate: req.body.eventdate,
@@ -13,3 +13,11 @@ module.exports.createEvent = async function (req, res){
     res.redirect(`/clubs/${clubId}`)
 }
 
+module.exports.deleteEvent = async function (req, res){
+    await ClubEvent.destroy({
+        where: {
+            id: req.params.clubId
+        }
+    });
+    res.redirect(`/clubs/${clubId}`);
+}

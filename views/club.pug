@@ -59,7 +59,7 @@ block content
                             div.popup#popup
                                 span.close#closePopup &times;
                                 div.popup-content
-                                    form.news(action="#" method="post")
+                                    form.news(action=`/clubs/${club.id}/event/create` method="POST")
                                         div.input-container
                                             label(for="eventtitle").form-label Name of Event:
                                             input(type="text" name="eventtitle" id="eventtitle" required=true)
@@ -68,9 +68,9 @@ block content
                                             input(type="date" name="eventdate" id="eventdate" required=true)
                                         div.input-container
                                             label.form-label Event Time:
-                                            input(type="time" name="event_start_time" id="event_start_time")
+                                            input(type="time" name="eventstart" id="eventstart")
                                             | to
-                                            input(type="time" name="event_end_time" id="event_end_time")
+                                            input(type="time" name="eventend" id="eventend")
                                         div.input-container
                                             label(for="eventdescription").form-label
                                             textarea(name="eventdescription" id="eventdescription" placeholder="Event Info..." required=true)
@@ -83,7 +83,7 @@ block content
                             div.popup#popupEvent
                                 span.close#closePopupEvent &times;
                                 div.popup-content
-                                    button.button-cancel Remove Event
+                                    a.button-cancel(href=`/clubs/${club.id}/event/delete`) Remove Event
                                     div.club-event-info
                                         div.event-details
                                             h2 Name:

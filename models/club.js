@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
                     sourceKey: 'clubname'
                 });
             }
+            Club.hasMany(models.ClubEvent, {
+                as: 'clubevent',
+                foreignKey: 'club_id'
+            });
         }
     }
 

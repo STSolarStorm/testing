@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
+/*
 // --> Calendar Events <--
     const events = [];
 
@@ -200,6 +200,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+
+ */
 
 
 
