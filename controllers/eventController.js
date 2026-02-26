@@ -1,7 +1,7 @@
 const {ClubEvent} = require('../models')
 
 module.exports.createEvent = async function (req, res){
-    let clubId = req.params.clubId
+    let clubId = req.params.clubId;
     await ClubEvent.create({
         eventtitle: req.body.eventtitle,
         eventdescription: req.body.eventdescription,

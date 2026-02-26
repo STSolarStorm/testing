@@ -11,10 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      ClubEvent.belongsTo(models.Club, {
-        as: 'clubevent',
-        foreignKey: 'club_id',
-      })
+
     }
   }
   ClubEvent.init({
