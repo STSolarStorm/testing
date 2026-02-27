@@ -10,7 +10,7 @@ module.exports.createEvent = async function (req, res){
         eventend: req.body.eventend,
         club_id: clubId
     });
-    res.redirect(`/clubs/${clubId}`)
+    res.redirect(`/clubs/${clubId}`);
 }
 
 module.exports.deleteEvent = async function (req, res){

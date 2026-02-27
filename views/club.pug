@@ -59,7 +59,7 @@ block content
                             div.popup#popup
                                 span.close#closePopup &times;
                                 div.popup-content
-                                    form.news(action=`/clubs/${club.id}/event/create` method="POST")
+                                    form.news(action=`/clubs/${club.id}/event/create` method="post")
                                         div.input-container
                                             label(for="eventtitle").form-label Name of Event:
                                             input(type="text" name="eventtitle" id="eventtitle" required=true)
@@ -75,7 +75,7 @@ block content
                                             label(for="eventdescription").form-label
                                             textarea(name="eventdescription" id="eventdescription" placeholder="Event Info..." required=true)
                                         div.form-button-row
-                                            button.button(type="submit" id="addEvent" onclick="addEvent()") Submit Event
+                                            button.button(type="submit") Submit Event
 
                     div.club-events-list
                         h2.event-name#calPopEvent Event
@@ -99,9 +99,9 @@ block content
                                             p Guy was talking smack online. We're going to be educating him about being nice to strangers.
 
             div.club-news
-                div.club-activities
-                    div.club-activities-heading
-                        h2 Club Activities
+                div.club-news-info
+                    div.club-news-heading
+                        h2 Club News
                         h2.formShow#formShow +
                         h2.formHide#formHide -
                     div.formNews#formNews
@@ -125,33 +125,6 @@ block content
                         p Ora ora ora?
                         p Ora ora ora?
                         p Ora ora ora?
-                div.club-opportunities
-                    div.club-activities-heading
-                        h2 Club Opportunities
-                        h2.formShow#formShow2 +
-                        h2.formHide#formHide2 -
-                    div.formNews#formNews2
-                        form.news(action='#' method="post")
-                            div.input-container
-                                label(for="opportunity_name").form-label Name of Opportunity:
-                                input(type="text" name="opportunity_name" id="opportunity_name" required=true)
-                            div.input-container
-                                label(for="opportunity_info").form-label
-                                textarea(name="opportunity_info" id="opportunity_info" placeholder="Opportunity Info..." required=true)
-                            div.form-button-row
-                                button.button(type="submit") Add Opportunity
-                    div.opportunities-content
-                        p Bonesaw is ready~!
-                        p Bonesaw is ready~!
-                        p Bonesaw is ready~!
-                        p Bonesaw is ready~!
-                        p Bonesaw is ready~!
-                        p Bonesaw is ready~!
-                        p Bonesaw is ready~!
-                        p Bonesaw is ready~!
-                        p Bonesaw is ready~!
-                        p Bonesaw is ready~!
-                        p Bonesaw is ready~!
         .club-info-sections
             .club-info-block
                 h3 What is this Activity?
