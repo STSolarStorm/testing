@@ -54,7 +54,7 @@ app.use(function (req, res, next) {
 app.use('/', indexRouter);      // Everything starting with '/' goes to the index route file
 app.use('/users', usersRouter); // Everything starting with '/users' goes to the user route file
 
-app.use(function (err, req, res, next) {
+app.use(function (err, req, res) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

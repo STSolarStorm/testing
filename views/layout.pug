@@ -15,10 +15,11 @@ html
             img(src="/images/placeholder.jpg", alt="Logo")
         nav.main-nav
           a(href="/") Home
-          if user && (user.role === "teacher" || user.role === "admin")
-            a(href="/club/add") Create Club
-            a(href="/registerofficer") Add Officer
           if user
+            if (user.role === "teacher" || user.role === "admin")
+              a(href="/club/add") Create Club
+            if (user.role === "teacher" || user.role === "admin" || user.role === "officer")
+              a(href="/registerofficer") Add Officer
             a.displayname(href=`/profile/${user.id}`)  | #{user.role} - #{user.ufirstname} |
             a(href="/logout") Logout
           else

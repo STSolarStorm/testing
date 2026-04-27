@@ -1,6 +1,6 @@
-const {User, Club, UserClub} = require('../models');
+const {User} = require('../models');
 const passport = require('passport');
-const md5 = require("md5");
+const sha256 = require('sha256');
 
 
 module.exports.renderRegisterUserForm = function(req, res){
@@ -23,7 +23,7 @@ module.exports.registerUser = async function(req, res){
 
         await User.create({
             email: req.body.email,
-            password: md5(req.body.password),
+            password: sha256(req.body.password),
             ufirstname: req.body.ufirstname,
             ulastname: req.body.ulastname,
             role: req.body.role,
