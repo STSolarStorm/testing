@@ -25,7 +25,6 @@ block content
                         option(value="student") Student
                         option(value="officer") Officer
                         option(value="teacher") Teacher
-                        option(value="admin") Admin
 
 
                 .input-container
@@ -34,9 +33,9 @@ block content
 
                 .input-container
                     label.form-label Password:
-                    input(type="password", name="password", id="showpass", required)
+                    input(type="password", name="password", id="passInput", required)
                     label.form-label Show Password
-                    input(type="checkbox" onclick="showPassword()")
+                    input(type="checkbox" id="togglePass")
 
                 .club-create-form-button
                     button(type="submit") Register User
