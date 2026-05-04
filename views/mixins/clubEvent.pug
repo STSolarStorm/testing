@@ -3,7 +3,7 @@ mixin clubEvent(event)
         h2.event-name#calPopEvent=event.eventtitle
         div.popup-overlay.popupOverlayEvent
             div.popup-event
-                span.close.closePopupEvent &times;
+                span#close-btn.close.closePopupEvent &times;
                 div.popup-content
                     if user && (user.role === "admin" || (user.role === "officer" && user.clubin === club.id))
                         a.button-cancel(href=`/clubs/${club.id}/event/delete/${event.id}`) Remove Event
