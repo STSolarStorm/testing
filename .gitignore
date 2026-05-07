@@ -1,4 +1,4 @@
 node_modules/
 .idea/
 config/config.json
-.env
+/.env
