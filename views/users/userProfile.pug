@@ -6,17 +6,18 @@ block content
     .profile-detail-page
 
         .profile-details
-            h1 #{user.ufirstname} #{user.ulastname}
+            h1 #{user.ufirstname} #{user.ulastname}'s Profile
 
             div.linebreak
 
                 .profile-clubs
-                    h2 #{user.ufirstname}'s Clubs
+                    h2 Your Clubs:
 
                     // USER'S LIST OF CLUBS THEY ARE CURRENTLY IN
                     div.user-club-list
-                        each club in user.clubs
-                            +userClubIn(club)
-
-
+                        if user.clubs && user.clubs.length > 0
+                            each club in user.clubs
+                                +userClubIn(club)
+                        else
+                            p User is not in any clubs
 

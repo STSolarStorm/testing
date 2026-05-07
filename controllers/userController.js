@@ -62,9 +62,18 @@ module.exports.logout = function (req, res) {
 
 
 module.exports.viewUserProfile = async function(req, res){
+    if (req.params.id != req.user.id){
+        return res.redirect(`/profile/${req.user.id}`);
+    }
+
     const user = await User.findByPk(req.params.id, {
         include: 'clubs'
     });
+
+    if (!user){
+        return res.redirect('/');
+    }
+
     res.render('users/userProfile', {user});
 }
 
