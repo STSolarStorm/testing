@@ -73,8 +73,9 @@ module.exports.displayClub = async function(req, res, next) {
                 {model: User, as: 'users'}
             ],
             order: [
-                ['clubnews', 'news_on', 'desc']
-            ]
+                ['clubnews', 'news_on', 'desc'],
+                ['clubevents', 'eventdate', 'desc']
+            ],
         });
 
         if (!club) {

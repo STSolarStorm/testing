@@ -10,7 +10,7 @@ block content
         .search-bar
             form(action="/search", method="GET")
                 input(type="text", name="q", placeholder="Search clubs...", value=searchQuery)
-                button(type="submit") Search
+                button.button-search(type="submit") Search
 
         .clubs-container
             each club in clubs

@@ -50,9 +50,6 @@ app.use('/users', usersRouter); // Everything starting with '/users' goes to the
 app.use(function (req, res, next) {
   next(createError(404));
 });
-//Routing the requests:
-app.use('/', indexRouter);      // Everything starting with '/' goes to the index route file
-app.use('/users', usersRouter); // Everything starting with '/users' goes to the user route file
 
 app.use(function (err, req, res) {
   res.locals.message = err.message;
