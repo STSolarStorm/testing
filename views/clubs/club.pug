@@ -30,6 +30,14 @@ block content
                         form(action=`/clubs/${club.id}/join` method='post')
                             button.button-submit(type="submit") Join Club!
 
+            if user && user.role === "teacher"
+                .club-admin-actions
+
+                    a.button-cancel(href=`/clubs/${club.id}/disclaim/${user.id}`) Disclaim Club
+
+                    form(action=`/clubs/${club.id}/claim` method='post')
+                        button.button-submit(type="submit") Claim Club
+
         .club-officers-section
             h2 Meet the Officers
             .club-officers-grid
@@ -61,8 +69,8 @@ block content
                     div.calendar-dates
 
 
-                div.club-events-form
-                    div.club-events
+                div.club-events
+                    div.club-events-form
                         div.club-events-heading
                             if user && (user.role === "admin" || (user.role === "officer" || (user.role === "teacher") && user.clubin === club.id))
                                 button.add-event(type="button")#calPop Add Event
@@ -95,8 +103,9 @@ block content
                                             button.button(type="submit") Submit Event
 
                     div.club-events-list
-                        each event in (club.clubevents || [])
-                            +clubEvent(event)
+                        div.club-events-list-info
+                            each event in (club.clubevents || [])
+                                +clubEvent(event)
 
 
 

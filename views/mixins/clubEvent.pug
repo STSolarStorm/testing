@@ -1,6 +1,9 @@
 mixin clubEvent(event)
     .event-card(data-id=event.id)
-        h2.event-name#calPopEvent=event.eventtitle
+        div.event-label
+            h2.event-name#calPopEvent=event.eventtitle
+            h4.event-date=event.eventdate
+
         div.popup-overlay.popupOverlayEvent
             div.popup-event
                 span#close-btn.close.closePopupEvent &times;

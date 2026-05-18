@@ -15,8 +15,6 @@ router.get('/', addUserToViews, function (req, res) {
 router.get('/clubs/', addUserToViews, clubController.displayAll)
 
 
-// SHINE'S FORM ROUTES
-
 // GET club creation form
 
 router.get('/club/add', addUserToViews, requireLogin, noStudent, noOfficer, teacherPermissions, adminPermissions, clubController.renderAddClubForm);
@@ -28,13 +26,6 @@ router.post('/club/add', addUserToViews, requireLogin, noStudent, noOfficer, tea
 router.get('/clubs/:clubId(\\d+)', addUserToViews, clubController.displayClub)
 
 
-
-/*
-// GET club creation form
-router.get('/clubcreate', function(req, res) {
-  res.render('club-create', { title: 'Create New Club' });
-});
-*/
 
 
 // GET officer registration form
@@ -108,6 +99,10 @@ router.get('/profile/:id(\\d+)', requireLogin, userController.viewUserProfile);
 router.post('/clubs/:clubId/join/', requireLogin, clubController.joinClub);
 router.get('/clubs/:clubId/leave/:userId', requireLogin, clubController.leaveClub);
 
+
+// TEACHER/ADVISOR CLAIM/UNCLAIMING CLUBS (TEMPORARY: REMOVE AFTER ALL PREEXISTING CLUBS HAVE BEEN CLAIMED)
+router.post('/clubs/:clubId/claim/', requireLogin, teacherPermissions, clubController.claimClub);
+router.get('/clubs/:clubId/disclaim/:userId', requireLogin, teacherPermissions, clubController.disclaimClub);
 
 
 // PERMISSIONS

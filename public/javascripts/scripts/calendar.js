@@ -91,6 +91,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 overlay.style.display = 'none';
             }
         });
+
+        // CLOSE: Pressing down escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                e.stopPropagation();
+                overlay.style.display = 'none';
+            }
+        })
+
     });
 })
 

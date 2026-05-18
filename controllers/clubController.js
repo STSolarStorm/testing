@@ -295,3 +295,32 @@ module.exports.leaveClub = async function(req, res) {
     });
     res.redirect(`/clubs/${clubId}`);
 }
+
+
+
+// ALL THE CODE BELOW THIS LINE IS TEMPORARY!!! (REMOVE AFTER THE ADVISORS/TEACHERS HAVE CLAIMED THEIR CLUBS)
+
+
+module.exports.claimClub = async function(req, res) {
+    const clubId = req.params.clubId;
+    const teacherId = req.user.id;
+
+    await TeacherClaim.create({
+        teacher_id: teacherId,
+        club_id: clubId
+    });
+    res.redirect(`/clubs/${clubId}`);
+}
+
+module.exports.disclaimClub = async function(req, res) {
+    const clubId = req.params.clubId;
+    const teacherId = req.user.id;
+
+    await TeacherClaim.destroy({
+        where: {
+            teacher_id: teacherId,
+            club_id: clubId,
+        }
+    });
+    res.redirect(`/clubs/${clubId}`);
+}
