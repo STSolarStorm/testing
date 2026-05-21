@@ -27,8 +27,6 @@ module.exports.addClub = async function(req, res){
     try {
         console.log('Form data received:', req.body); // Debug: see what data is coming in
 
-
-
         const newClub = await Club.create({
             clubname: req.body.clubname,
             advisorfirstname: req.body.advisorfirstname,
@@ -62,6 +60,7 @@ module.exports.addClub = async function(req, res){
         });
     }
 };
+
 
 module.exports.displayClub = async function(req, res, next) {
     try {
@@ -105,7 +104,6 @@ module.exports.displayClub = async function(req, res, next) {
         // Convert to plain object to ensure associations are accessible
         const clubPlain = club.get({ plain: true });
 
-
         const formattedClub = {
             id: clubPlain.id,
             name: clubPlain.clubname,
@@ -138,12 +136,14 @@ module.exports.displayClub = async function(req, res, next) {
     }
 };
 
+
 module.exports.renderEditClub = async function(req, res) {
 
         const club = await Club.findByPk(req.params.clubId);
         if (!club) return res.status(404).send('Club not found');
         res.render('clubs/editClub', {title: 'Edit Club', club});
 };
+
 
 module.exports.updateClub = async function(req, res) {
     try {
@@ -173,6 +173,7 @@ module.exports.updateClub = async function(req, res) {
     }
 }
 
+
 module.exports.deleteClub = async function(req, res) {
     try {
         await Club.destroy({ where: { id: req.params.clubId } });
@@ -182,6 +183,7 @@ module.exports.deleteClub = async function(req, res) {
         res.send('Error deleting club');
     }
 }
+
 
 module.exports.displayAll = async function(req, res, next) {
     try {
@@ -218,7 +220,7 @@ module.exports.displayAll = async function(req, res, next) {
 module.exports.search = async function(req, res) {
     try {
         const query = req.query.q;
-        const clubs = await Club.findAll({
+        let clubs = await Club.findAll({
             where: {
                 [Op.or]: [
                     { clubname: { [Op.iLike]: `%${query}%` } },
@@ -228,6 +230,12 @@ module.exports.search = async function(req, res) {
                 ]
             }
         });
+
+        let searchRandom = req.query.random || false;
+        if (clubs.length > 0 && searchRandom) {
+            let randomIndex = getRandomInt(clubs.length);
+            clubs = [clubs[randomIndex]];
+        }
 
         res.render('clubs/viewAll', {
             title: 'Search Results',
@@ -247,14 +255,14 @@ module.exports.search = async function(req, res) {
                 bigDesc: club.bigdescription,
                 clubinstagram: club.clubinstagram,
             })),
-            searchQuery: query
+            searchQuery: query,
+            searchRandom
         });
     } catch (error) {
         console.error('Search error:', error);
         res.redirect('/');
     }
 };
-
 
 
 // Remove an Officer from their club (Should no longer show their card on the respective club page)
@@ -271,11 +279,8 @@ module.exports.removeOfficerFromClub = async function(req, res) {
 
 
 module.exports.joinClub = async function(req, res) {
-
     const clubId = req.params.clubId;
     const userId = req.user.id;
-
-
 
     await UserClub.create({
         user_id: userId,
@@ -297,9 +302,14 @@ module.exports.leaveClub = async function(req, res) {
 }
 
 
+function getRandomInt(max){
+    return Math.floor(Math.random() * max);
+}
+
+
+
 
 // ALL THE CODE BELOW THIS LINE IS TEMPORARY!!! (REMOVE AFTER THE ADVISORS/TEACHERS HAVE CLAIMED THEIR CLUBS)
-
 
 module.exports.claimClub = async function(req, res) {
     const clubId = req.params.clubId;

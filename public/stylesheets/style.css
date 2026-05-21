@@ -191,7 +191,14 @@ button.club-card {
   padding: 10px;
 }
 
+.form-search{
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+}
 
+.form-search-options {
+}
 
 textarea {
   resize: both;

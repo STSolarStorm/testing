@@ -8,9 +8,13 @@ block content
         p Explore all the student organizations on campus.
 
         .search-bar
-            form(action="/search", method="GET")
-                input(type="text", name="q", placeholder="Search clubs...", value=searchQuery)
+            form.form-search(action="/search", method="GET")
+                div.form-search-options
+                    input(type="text", name="q", placeholder="Search clubs...", value=searchQuery)
+                    label(for="random") Random
+                    input(type="checkbox" name="random" id="random" checked=searchRandom)
                 button.button-search(type="submit") Search
+
 
         .clubs-container
             each club in clubs
