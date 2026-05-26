@@ -865,6 +865,7 @@ nav.main-nav a:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   max-width: 600px;
   min-width: 600px;
+  z-index: 999;
 }
 
 .club-events {
@@ -955,6 +956,7 @@ nav.main-nav a:hover {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
 }
 
 .popup {
@@ -980,17 +982,6 @@ nav.main-nav a:hover {
   font-size: 20px;
   cursor: pointer;
   color: #333;
-}
-
-
-.popup-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
 }
 
 
@@ -1308,4 +1299,28 @@ nav.main-nav a:hover {
 
 .user-club:hover {
   background-color: #dfdfdf;
+}
+
+/* ADMIN APPROVAL */
+table {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+thead {
+    background: #eaeaea;
+}
+td {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    align-content: center;
+    text-align: center;
+}
+
+.no-pending-box {
+    margin: 40px auto 0 auto; /* Top margin 40px, Left/Right Auto centers the block */
+    text-align: center;       /* Centers the text string inside the block */
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    max-width: 500px;         /* Gives the alert box a clean, contained width */
+    width: 100%;
 }

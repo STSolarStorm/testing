@@ -32,11 +32,11 @@ block content
 
             if user && user.role === "teacher"
                 .club-admin-actions
-
-                    a.button-cancel(href=`/clubs/${club.id}/disclaim/${user.id}`) Disclaim Club
-
-                    form(action=`/clubs/${club.id}/claim` method='post')
-                        button.button-submit(type="submit") Claim Club
+                    if isClaimedByMe
+                        a.button-cancel(href=`/clubs/${club.id}/disclaim`) Disclaim Club
+                    else if !isClaimedByAnyone
+                        form(action=`/clubs/${club.id}/claim` method='post')
+                            button.button-submit(type="submit") Claim Club
 
         .club-officers-section
             h2 Meet the Officers
@@ -151,8 +151,8 @@ block content
         .club-admin-actions
             a.back-button(href="/") ← Back
 
-            if user && (user.role === "admin" || (user.role === "officer" || (user.role === "teacher") && user.clubin === club.id))
-                a(href="/clubs/" + club.id + "/edit") Edit Club
+            if user && (user.role === "admin" || isClaimedByMe || isClubOfficer)
+                a(href=`/clubs/${club.id}/edit`) Edit Club
 
     // Pass event data to JavaScript (ONLY ONCE, at the bottom)
     script.

@@ -40,7 +40,7 @@ app.use(session({
 }));
 const {passport} = require('./middleware/passport');
 app.use(passport.initialize());
-app.use(passport.authenticate('session'))
+app.use(passport.session());
 
 //Routing the requests:
 app.use('/', indexRouter);      // Everything starting with '/' goes to the index route file

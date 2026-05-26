@@ -1,4 +1,4 @@
-const {Club, Officer, ClubEvent, News, UserClub, User} = require('../models');
+const {Club, Officer, ClubEvent, News, UserClub, User, TeacherClaim} = require('../models');
 const {Op} = require("sequelize");
 
 
@@ -96,13 +96,40 @@ module.exports.displayClub = async function(req, res, next) {
             }));
         }
 
+        // Check user membership status of club
         let isMember = false;
         if (req.user && club.users) {
             isMember = club.users.some(u => u.id === req.user.id)
         }
 
+
+        // Check claim of club
+        let isClaimedByMe = false;
+        let isClaimedByAnyone = false;
+        const claim = await TeacherClaim.findOne({
+            where: {
+                club_id: club.id
+            }
+        });
+
+        if (claim) {
+            isClaimedByAnyone = true;
+            if (req.user && req.user.role === 'teacher' && Number(claim.teacher_id) === Number(req.user.id)) {
+                isClaimedByMe = true;
+            }
+        }
+
+
         // Convert to plain object to ensure associations are accessible
         const clubPlain = club.get({ plain: true });
+
+
+        let isClubOfficer = false;
+        if (req.user && req.user.role === 'officer' && req.user.clubin) {
+            if (String(req.user.clubin) === String(clubPlain.id) || String(req.user.clubin) === String(clubPlain.clubname)) {
+                isClubOfficer = true;
+            }
+        }
 
         const formattedClub = {
             id: clubPlain.id,
@@ -128,7 +155,10 @@ module.exports.displayClub = async function(req, res, next) {
         res.render('clubs/club', {
             title: club.clubname,
             club: formattedClub,
-            isMember: isMember
+            isMember: isMember,
+            isClaimedByMe: isClaimedByMe,
+            isClaimedByAnyone: isClaimedByAnyone,
+            isClubOfficer: isClubOfficer
         });
     } catch (error) {
         console.error('Error fetching club:', error);
@@ -187,7 +217,9 @@ module.exports.deleteClub = async function(req, res) {
 
 module.exports.displayAll = async function(req, res, next) {
     try {
-        const clubs = await Club.findAll();
+        const clubs = await Club.findAll({
+            order: [['clubname', 'asc']]
+        });
 
         const formattedClubs = clubs.map(club => ({
             id: club.id,
@@ -220,6 +252,8 @@ module.exports.displayAll = async function(req, res, next) {
 module.exports.search = async function(req, res) {
     try {
         const query = req.query.q;
+        let searchRandom = req.query.random || false;
+
         let clubs = await Club.findAll({
             where: {
                 [Op.or]: [
@@ -228,10 +262,11 @@ module.exports.search = async function(req, res) {
                     { commitment: { [Op.iLike]: `%${query}%` } },
                     { advisorlastname: { [Op.iLike]: `%${query}%` } }
                 ]
-            }
+            },
+            order: [['clubname', 'asc']]
         });
 
-        let searchRandom = req.query.random || false;
+
         if (clubs.length > 0 && searchRandom) {
             let randomIndex = getRandomInt(clubs.length);
             clubs = [clubs[randomIndex]];
@@ -315,10 +350,19 @@ module.exports.claimClub = async function(req, res) {
     const clubId = req.params.clubId;
     const teacherId = req.user.id;
 
-    await TeacherClaim.create({
-        teacher_id: teacherId,
-        club_id: clubId
+
+    const existingClaim = await TeacherClaim.findOne({
+        where: {
+            club_id: clubId
+        }
     });
+
+    if (!existingClaim) {
+        await TeacherClaim.create({
+            teacher_id: teacherId,
+            club_id: clubId
+        });
+    }
     res.redirect(`/clubs/${clubId}`);
 }
 

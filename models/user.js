@@ -26,7 +26,12 @@ module.exports = (sequelize, DataTypes) => {
         ufirstname: DataTypes.STRING,
         ulastname: DataTypes.STRING,
         password: DataTypes.STRING,
-        role: DataTypes.STRING
+        role: DataTypes.STRING,
+        isapproved: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true
+        }
     }, {
         sequelize,
         modelName: 'User',
