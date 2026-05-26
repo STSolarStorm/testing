@@ -57,7 +57,7 @@ router.get('/search', addUserToViews, clubController.search);
 
 
 // GET edit club form
-router.get('/clubs/:clubId/edit', requireLogin, canEditClub, clubController.renderEditClub);
+router.get('/clubs/:clubId/edit', requireLogin, canEditClub, addUserToViews, clubController.renderEditClub);
 
 // POST update club
 router.post('/clubs/:id/edit', requireLogin, canEditClub, clubController.updateClub);

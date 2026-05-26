@@ -72,7 +72,7 @@ block content
                 div.club-events
                     div.club-events-form
                         div.club-events-heading
-                            if user && (user.role === "admin" || (user.role === "officer" || (user.role === "teacher") && user.clubin === club.id))
+                            if user && (user.role === "admin" || isClaimedByMe || isClubOfficer)
                                 button.add-event(type="button")#calPop Add Event
 
                         div.popup-overlay#popupOverlay
@@ -112,7 +112,7 @@ block content
             div.club-news
                 div.club-news-heading
                     h2 Club News
-                    if user && (user.role === "admin" || (user.role === "officer" || (user.role === "teacher") && user.clubin === club.id))
+                    if user && (user.role === "admin" || isClaimedByMe || isClubOfficer)
                         h2.formShow#formShow +
                         h2.formHide#formHide -
                 div.formNews#formNews
